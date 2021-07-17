@@ -10,9 +10,11 @@ const AddressDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin: 25px auto;
-  input {
+  font-size: 1.2rem;
+  input, button {
     font-size: 1rem;
     padding: 0.5rem;
+    margin-top: 0.25rem;
   }
   button {
     font-size: 1rem;
