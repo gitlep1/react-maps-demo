@@ -1,8 +1,10 @@
 import GoogleMapReact from 'google-map-react'
 import { useState } from 'react';
 import styled from 'styled-components';
-import AddressInput from './Components/AddressInput';
-import Marker from './Components/Marker';
+import AddressInput from '../Components/AddressInput';
+import Marker from '../Components/Marker';
+import { rocData } from '../Data/rocData';
+
 
 const MapDiv = styled.div`
   width: 800px;
@@ -20,7 +22,7 @@ export default function GoogleMap() {
   };
 
   const [mapCenter, setMapCenter] = useState(defaults.center)
-  const [markers, setMarkers] = useState([])
+  const [markers, setMarkers] = useState([...rocData])
   
   const addMarker = (newMarker) => {
     setMarkers([...markers, newMarker])
@@ -49,7 +51,7 @@ export default function GoogleMap() {
             <Marker 
               lat={marker.coords.lat}
               lng={marker.coords.lng}
-              text={marker.title}
+              address={marker.address}
             />
           ))}
         </GoogleMapReact>

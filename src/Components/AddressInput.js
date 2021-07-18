@@ -2,7 +2,6 @@ import { useState } from "react";
 import Geocode from 'react-geocode';
 import styled from 'styled-components';
 
-
 const AddressDiv = styled.div`
   width: 500px;
   display: flex;
@@ -35,8 +34,6 @@ export default function AddressInput ({setMapCenter, addMarker}) {
       (response) => {
         const coords = response.results[0].geometry.location;
         // console.log(response);
-        const title = response.results[0].formatted_address;
-        console.log(title);
         setMapCenter(coords);
       },
       (error) => {
@@ -48,10 +45,10 @@ export default function AddressInput ({setMapCenter, addMarker}) {
     Geocode.fromAddress(address).then(
       (response) => {
         const coords = response.results[0].geometry.location;
+        const address = response.results[0].formatted_address;
         console.log(coords)
-        const title = response.results[0].formatted_address;
         addMarker({
-          title,
+          address,
           coords
         })
       },
