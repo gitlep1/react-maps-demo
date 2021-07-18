@@ -1,4 +1,4 @@
-import { GoogleMap, useJsApiLoader, useGoogleMap, Marker, MarkerClusterer } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker, MarkerClusterer } from "@react-google-maps/api";
 import { useCallback, useEffect, useState } from "react";
 import AddressInput from "../Components/AddressInput";
 import { rocData } from "../Data/rocData";
@@ -38,6 +38,7 @@ export default function ThirdMap () {
   // useCallback so we can use the same function on rerender
   const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
+    console.log("bounds",bounds)
     map.fitBounds(bounds);
     setMap(map)
   }, [])
@@ -72,7 +73,7 @@ export default function ThirdMap () {
         {(clusterer) =>
           markers.map(marker => (
             <Marker 
-              key={`${marker.coords.lng}${marker.coords.lat}`}
+              key={`${marker.address}${marker.coords.lng}`}
               position={marker.coords}
               clusterer={clusterer}
               // icon={CouchIcon}
