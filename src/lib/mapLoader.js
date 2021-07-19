@@ -8,7 +8,7 @@ export default function mapLoader(markers, mapOptions) {
     apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     version: "weekly",
   });
-
+  
   loader
     .load()
     .then((google) => {
@@ -39,9 +39,10 @@ export default function mapLoader(markers, mapOptions) {
       const markerCluster = new MarkerClusterer(map, googleMarkers, {
         imagePath: "https://unpkg.com/@googlemaps/markerclustererplus@1.0.3/images/m",
       });
-      console.log("markercluster", markerCluster)
+      // console.log("markercluster", markerCluster)
     })
     .catch(e => {
       console.error(e);
     });
+
   }

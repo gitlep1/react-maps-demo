@@ -1,5 +1,6 @@
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { useState } from "react";
+import CouchIcon from '../Assets/couch.svg'
 
 const containerStyle = {
   width: '800px',
@@ -52,6 +53,7 @@ export default function LocationPicker () {
           setLng(e.latLng.lng());
           // console.log(e.latLng.lat(),e.latLng.lng());
         }}
+        // icon={CouchIcon}
       />
     </GoogleMap>
     </>
