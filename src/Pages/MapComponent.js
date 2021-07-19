@@ -35,6 +35,7 @@ export default function MapComponent({apiKey}) {
 
   return (     
     <>
+      <h1>google js api, no package</h1>
       <AddressInput 
         setMapCenter={setMapCenter}
         addMarker={addMarker}

@@ -35,6 +35,7 @@ export default function GoogleMap() {
 
   return (
     <>
+      <h1>google-map-react</h1>
       <AddressInput 
         setMapCenter={setMapCenter}
         addMarker={addMarker}

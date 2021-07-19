@@ -28,6 +28,7 @@ export default function LocationPicker () {
 
   return isLoaded ? (
     <>
+    <h1>@react-google-maps/api</h1>
     <p style={{
       textAlign: 'center',
       fontSize: '30px'

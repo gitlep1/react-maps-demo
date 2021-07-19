@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import Geocode from 'react-geocode';
 import styled from 'styled-components';
 
@@ -22,8 +22,12 @@ const AddressDiv = styled.div`
   }
 `;
 
-export default function AddressInput ({setMapCenter, addMarker}) {
-  const [address, setAddress] = useState('');
+export default function AddressInput ({setMapCenter, addMarker, addressDisplay}) {
+  const [address, setAddress] = useState(addressDisplay);
+
+  useEffect(() => {
+    setAddress(addressDisplay)
+  },[addressDisplay])
 
   Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
   Geocode.setLanguage("en");
@@ -62,6 +66,7 @@ export default function AddressInput ({setMapCenter, addMarker}) {
       <input 
         type="text" 
         name="address"
+        value={address}
         placeholder="Enter an address"
         onChange={(e) => setAddress(e.target.value)}
       />

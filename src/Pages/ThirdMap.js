@@ -1,4 +1,4 @@
-import { GoogleMap, useJsApiLoader, Marker, MarkerClusterer } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker, MarkerClusterer, InfoWindow } from "@react-google-maps/api";
 import { useCallback, useEffect, useState } from "react";
 import AddressInput from "../Components/AddressInput";
 import { rocData } from "../Data/rocData";
@@ -26,8 +26,9 @@ export default function ThirdMap () {
     // other options
   })
 
-  const [ mapCenter, setMapCenter ] = useState(mapDefaults.center);
+  const [mapCenter, setMapCenter] = useState(mapDefaults.center);
   const [markers, setMarkers] = useState([...rocData])
+  const [addressDisplay, setAddressDisplay] = useState('')
   
   const addMarker = (newMarker) => {
     setMarkers([...markers, newMarker])
@@ -53,9 +54,11 @@ export default function ThirdMap () {
 
   return isLoaded ? (
     <>
+    <h1>@react-google-maps/api</h1>
     <AddressInput 
       setMapCenter={setMapCenter}
       addMarker={addMarker}
+      addressDisplay={addressDisplay}
     />
     <GoogleMap
       mapContainerStyle={containerStyle}
@@ -72,6 +75,7 @@ export default function ThirdMap () {
       }}>
         {(clusterer) =>
           markers.map(marker => (
+            <>
             <Marker 
               key={`${marker.address}${marker.coords.lng}`}
               position={marker.coords}
@@ -79,7 +83,9 @@ export default function ThirdMap () {
               // icon={CouchIcon}
               // label={'!'}
               title={marker.address}
+              onClick={()=> setAddressDisplay(marker.address)}
             />
+            </>
           ))}
       </MarkerClusterer>
     </GoogleMap>

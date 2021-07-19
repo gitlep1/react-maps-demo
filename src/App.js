@@ -14,25 +14,25 @@ function App() {
         <Route 
           path="/google"
           render={() => (
-            <MapComponent />
-          )}
+            <GoogleMap />
+            )}
         />
         <Route 
           path="/third"
           render={() => (
             <ThirdMap />
-          )}
+            )}
         />
         <Route 
           path="/picker"
           render={() => (
             <LocationPicker />
-          )}
+            )}
         />
         <Route 
           path="/"
           render={() => (
-            <GoogleMap />
+            <MapComponent />
           )}
         />
       </Switch>
