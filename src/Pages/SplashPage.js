@@ -30,7 +30,7 @@ export default function SplashPage(props) {
   return (
     <SplashDiv>
       <TitleStyle>Going Once!</TitleStyle>
-        <GetCurrentLocation setLocation={setLocation} />
+        {/* <GetCurrentLocation setLocation={setLocation} /> */}
         <SplashLocation location={location} />
     </SplashDiv>
   )
