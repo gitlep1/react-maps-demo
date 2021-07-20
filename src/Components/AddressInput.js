@@ -37,7 +37,7 @@ export default function AddressInput ({setMapCenter, addMarker, addressDisplay})
     Geocode.fromAddress(address).then(
       (response) => {
         const coords = response.results[0].geometry.location;
-        // console.log(response);
+        console.log(response.results);
         setMapCenter(coords);
       },
       (error) => {

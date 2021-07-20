@@ -81,8 +81,8 @@ export default function ThirdMap () {
               position={marker.coords}
               clusterer={clusterer}
               // icon={CouchIcon}
-              // label={'!'}
-              title={marker.address}
+              // label={'JFIPEOHoife'}
+              // title={"Blah"}
               onClick={()=> setAddressDisplay(marker.address)}
             />
             </>
