@@ -1,6 +1,7 @@
-import { Status, Wrapper } from "@googlemaps/react-wrapper";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import streetchair from '../Assets/streetchair.jpg'
+import GetCurrentLocation from "../Components/GetCurrentLocation";
 import SplashLocation from "../Components/SplashLocation";
 
 const SplashDiv = styled.div`
@@ -23,15 +24,14 @@ const TitleStyle = styled.h1`
   text-shadow: #000 2px 2px 5px;
 `;
 
-// const apiMapsLoaded = () => {
-//   if (Status.LOADING) return <p>Loading...</p>;
-// }
-
 export default function SplashPage(props) {
+  const [location, setLocation] = useState({})
+
   return (
     <SplashDiv>
       <TitleStyle>Going Once!</TitleStyle>
-        <SplashLocation />
+        <GetCurrentLocation setLocation={setLocation} />
+        <SplashLocation location={location} />
     </SplashDiv>
   )
 }

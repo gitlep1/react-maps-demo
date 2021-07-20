@@ -24,10 +24,10 @@ export default function Map({google}) {
 
   return (
     <>
-      <AutoCompleteInput type="cities" />
+      {/* <AutoCompleteInput type="cities" /> */}
       <p>{locData.location.name}</p>
-      <p>{locData.location.coords.lat}</p>
-      <p>{locData.location.coords.lng}</p>
+      <p>{locData.location.coords.lat()}</p>
+      <p>{locData.location.coords.lng()}</p>
       <MapDiv id="map">Loading...</MapDiv>
     </>
   );

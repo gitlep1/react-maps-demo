@@ -14,28 +14,16 @@ import { Wrapper } from "@googlemaps/react-wrapper";
 function App() {
   // const [google, setGoogle] = useState(null)
   const [location, setLocation] = useState({
-    name: "Rochester, NY",
+    name: "",
     coords: {
-      lat: 43.156578,
-      lng: -77.608849,
+      // lat: 43.156578,
+      // lng: -77.608849,
     },
   })
 
   const setLoc = (newLoc) => {
     setLocation(newLoc)
   }
-
-  // useEffect(() => {
-  //   const loader = new Loader({
-  //     apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-  //     version: "weekly",
-  //   });
-
-  //   loader.load()
-  //   .then((google) => {
-  //     setGoogle(google)
-  //   })
-  // }, [])
 
   return (
     <>

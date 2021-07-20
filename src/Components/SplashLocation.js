@@ -4,9 +4,8 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import { LocationContext } from "../lib/LocationContext";
 import AutoCompleteInput from "./AutoCompleteInput";
-import LocationAutoComplete from "./LocationAutocomplete";
 
-const LocationStyled = styled.div`
+const LocationBox= styled.div`
   max-width: max-content;
   text-align: center;
   background-color: rgba(255,255,255,0.8);
@@ -25,28 +24,35 @@ const LocationStyled = styled.div`
   }
 `;
 
-export default function SplashLocation(props) {
+export default function SplashLocation({location}) {
   const locData = useContext(LocationContext)
   const history = useHistory();
 
-  const handleSubmit = (value) => {
-    locData.setLoc({
-      name: value.label,
-      coords: value.coords,
-    })
-    history.push('/map')
-  }
+  // const handleSubmit = (value) => {
+  //   locData.setLoc({
+  //     name: value.label,
+  //     coords: value.coords,
+  //   })
+  //   history.push('/map')
+  // }
 
   return (
-    <LocationStyled>
-      <h1>What's the Nearest City?</h1>
+    <LocationBox>
+      <h1>What's your Nearest City?</h1>
       <div>
         <AutoCompleteInput
+          location={location}
           type="cities"
-          handleSubmit={handleSubmit} />
-        <Button>Go</Button>
+        />
+        <Button
+          onClick={() => {
+            history.push('/map')
+          }}
+        >
+          Go
+        </Button>
       </div>
-    </LocationStyled>
+    </LocationBox>
   );
 
 
