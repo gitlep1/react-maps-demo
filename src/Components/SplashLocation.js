@@ -28,14 +28,6 @@ export default function SplashLocation({location}) {
   const locData = useContext(LocationContext)
   const history = useHistory();
 
-  // const handleSubmit = (value) => {
-  //   locData.setLoc({
-  //     name: value.label,
-  //     coords: value.coords,
-  //   })
-  //   history.push('/map')
-  // }
-
   return (
     <LocationBox>
       <h1>What's your Nearest City?</h1>
@@ -54,6 +46,4 @@ export default function SplashLocation({location}) {
       </div>
     </LocationBox>
   );
-
-
 }
