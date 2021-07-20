@@ -15,10 +15,10 @@ const mapDefaults = {
     lat: 43.156578,
     lng: -77.608849,
   },
-  zoom: 12,
+  zoom: 10,
 }
 
-export default function ThirdMap () {
+export default function MapCompponent ( {center}) {
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     region: 'us',
@@ -26,9 +26,8 @@ export default function ThirdMap () {
     // other options
   })
 
-  const [mapCenter, setMapCenter] = useState(mapDefaults.center);
+  const [mapCenter, setMapCenter] = useState(center || mapDefaults.center);
   const [markers, setMarkers] = useState([...rocData])
-  const [addressDisplay, setAddressDisplay] = useState('')
   
   const addMarker = (newMarker) => {
     setMarkers([...markers, newMarker])
@@ -54,15 +53,10 @@ export default function ThirdMap () {
 
   return isLoaded ? (
     <>
-    <h1>@react-google-maps/api</h1>
-    <AddressInput 
-      setMapCenter={setMapCenter}
-      addMarker={addMarker}
-      addressDisplay={addressDisplay}
-    />
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={mapDefaults.center}
+      center={center || mapDefaults.center}
+      defaultZoom={mapDefaults.zoom}
       zoom={mapDefaults.zoom}
       clickableIcons={false}
       onLoad={onLoad}
@@ -82,7 +76,7 @@ export default function ThirdMap () {
               // icon={CouchIcon}
               // label={'!'}
               // title={"Blah"}
-              onClick={()=> setAddressDisplay(marker.address)}
+              // onClick={()=> setAddressDisplay(marker.address)}
             >
             </Marker>
           ))}

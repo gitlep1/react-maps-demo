@@ -11,7 +11,7 @@ const MapDiv = styled.div`
   margin: 0 auto;
 `;
 
-export default function MapComponent({apiKey}) {
+export default function MapScriptOnly({apiKey}) {
   // initial map defaults
   const defaults = {
     center: {
