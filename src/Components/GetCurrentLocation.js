@@ -13,12 +13,13 @@ export default function GetCurrentLocation({setLocation}) {
               position.coords.latitude, position.coords.longitude,
             );
             const geocoder = new window.google.maps.Geocoder()
+            
             geocoder.geocode({ location: pos})
             .then((response) => {
               console.log("response", response)
               if (response.results[0]) {
-                const city = response.results[0]?.address_components?.find(comp => comp.types.includes('locality')).long_name
-                const state = response.results[0]?.address_components?.find(comp => comp.types.includes('administrative_area_level_1')).short_name
+                const city = response.results[0]?.address_components?.find(comp => comp.types.includes('locality'))?.long_name
+                const state = response.results[0]?.address_components?.find(comp => comp.types.includes('administrative_area_level_1'))?.short_name
                 if(city && state && pos) {
                   const location = {
                     name: `${city}, ${state}`,
