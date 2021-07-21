@@ -16,7 +16,7 @@ export default function Map({google}) {
   useEffect(() => {
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: locData.location.coords,
-      zoom: 10,
+      zoom: 12,
       // mapId: MAP_ID,
     });
   },[])
