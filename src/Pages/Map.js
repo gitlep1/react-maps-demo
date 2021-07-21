@@ -24,7 +24,6 @@ export default function Map({google}) {
 
   return (
     <>
-      {/* <AutoCompleteInput type="cities" /> */}
       <p>{locData.location.name}</p>
       <p>{locData.location.coords.lat()}</p>
       <p>{locData.location.coords.lng()}</p>
