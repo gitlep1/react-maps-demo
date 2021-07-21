@@ -26,7 +26,18 @@ export default function AutoCompleteInput({type, location}) {
     const autocomplete = new window.google.maps.places.Autocomplete(
       inputEl.current, options)
     autocomplete.addListener('place_changed', () => {
-      console.log(autocomplete.getPlace())
+      const res = autocomplete.getPlace();
+      console.log(res)
+      const city = res.address_components.find(comp => comp.types.includes('locality')).long_name
+      const state = res.address_components.find(comp => comp.types.includes('administrative_area_level_1')).short_name
+      const pos = res.geometry.location
+      const location = {
+        name: `${city}, ${state}`,
+        coords: pos
+      }
+      console.log(location)
+      setInput(res.formatted_address)
+      locData.setLoc(location)
     })
   },[])
 

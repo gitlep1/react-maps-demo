@@ -5,6 +5,7 @@ import styled from "styled-components";
 import streetchair from '../Assets/streetchair.jpg'
 import AutoCompleteInput from "../Components/AutoCompleteInput";
 import GetCurrentLocation from "../Components/GetCurrentLocation";
+import SplashLocation from "../Components/SplashLocation";
 import { LocationContext } from "../lib/LocationContext";
 
 const SplashDiv = styled.div`
@@ -48,29 +49,12 @@ const LocationBox= styled.div`
 
 export default function SplashPage(props) {
   const [location, setLocation] = useState({})
-  const locData = useContext(LocationContext)
-  const history = useHistory();
 
   return (
     <SplashDiv>
       <TitleStyle>Going Once!</TitleStyle>
       <GetCurrentLocation setLocation={setLocation} />
-      <LocationBox>
-        <h1>What's your Nearest City?</h1>
-        <div>
-          <AutoCompleteInput
-            location={location}
-            type="cities"
-          />
-          <Button
-            onClick={() => {
-              history.push('/map')
-            }}
-          >
-            Go
-          </Button>
-        </div>
-      </LocationBox>
+      <SplashLocation location={location} />
     </SplashDiv>
   )
 }

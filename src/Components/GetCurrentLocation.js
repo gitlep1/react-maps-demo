@@ -39,7 +39,7 @@ export default function GetCurrentLocation({setLocation}) {
         console.log("Your browser does not support Geolocation")
       }
     }, 1000)
-  })
+  }, [])
 
   return <></>;
 }
